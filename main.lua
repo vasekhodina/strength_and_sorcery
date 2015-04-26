@@ -1,3 +1,4 @@
+--Game Version: 0.0.1
 local M = {}
 worldScreen = require "worldScreen"
 ih = require "inputHandler"
