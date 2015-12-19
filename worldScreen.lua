@@ -3,9 +3,9 @@ local WS = {}
 
 map = require "map"
 
-local lWallCoords = {{0,0}, {0,60}, {0,86}, {0,104}}
-local rWallCoords = {{896,0}, {896,40}, {896,86}, {896,104}}
-local fWallCoords = {{0,0}, {128,40}, {240,86}, {296,104}}
+local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
+local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
+local fWallCoords = {{4,4}, {128,24}, {240,74}, {296,124}}
 local scale = 4
 
 function WS.loadWorldScreen()
@@ -28,8 +28,8 @@ function WS.loadWorldScreen()
 end
 
 function WS.drawWorldScreen(party,map)
-	love.graphics.draw(floor,0,208,0,scale)
-	love.graphics.draw(roof,0,0,0,scale)
+	love.graphics.draw(floor,4,212,0,scale)
+	love.graphics.draw(roof,4,4,0,scale)
 	viewMatrix = WS.createViewMatrix(party.x, party.y, party.direction, map.currentMap)
 	if viewMatrix[4][1] == 1 then love.graphics.draw(left_wall4, lWallCoords[4][1],lWallCoords[4][2],0,scale) end			
 	if viewMatrix[4][3] == 1 then love.graphics.draw(left_wall4, rWallCoords[4][1],rWallCoords[4][2],0,-scale,scale) end			

@@ -18,6 +18,7 @@ function love.load()
 	love.graphics.setDefaultFilter('nearest','nearest')
 	print('text')
 	worldScreen.loadWorldScreen()
+
 end
 
 -- Increase the size of the rectangle every frame.
@@ -27,5 +28,6 @@ end
 -- Draw a coloured rectangle.
 function love.draw()
 	worldScreen.drawWorldScreen(party,map)
+	love.graphics.rectangle("line",0,0,904,552)
 end
 return M
