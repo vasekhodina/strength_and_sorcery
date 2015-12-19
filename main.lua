@@ -1,4 +1,3 @@
---Game Version: 0.0.1
 local M = {}
 worldScreen = require "worldScreen"
 ih = require "inputHandler"
@@ -16,6 +15,7 @@ end
 function love.load()
 	love.window.setTitle("Sword and Sorcery(work title)")
 	love.window.setMode(1024,720)
+	love.graphics.setDefaultFilter('nearest','nearest')
 	print('text')
 	worldScreen.loadWorldScreen()
 end

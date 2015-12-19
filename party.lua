@@ -3,7 +3,7 @@
 
 local party = {}
 
--- keeps party direction 0 - north, 1 - east, 2 - south, 3 - west
+-- keeps party direction 0 - north, 1 - east, 2 - south, 3 - west 
 map = require "map"
 party.direction = 0
 party.x = 17
