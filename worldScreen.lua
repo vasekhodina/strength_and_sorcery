@@ -2,6 +2,7 @@
 local WS = {}
 
 map = require "map"
+party = require "party"
 
 local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
 local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
@@ -30,7 +31,7 @@ end
 function WS.drawWorldScreen(party,map)
 	love.graphics.draw(floor,4,212,0,scale)
 	love.graphics.draw(roof,4,4,0,scale)
-	viewMatrix = WS.createViewMatrix(party.x, party.y, party.direction, map.currentMap)
+	viewMatrix = WS.createViewMatrix(party.getX(), party.getY(), party.getDirection(), map.currentMap)
 	if viewMatrix[4][1] == 1 then love.graphics.draw(left_wall4, lWallCoords[4][1],lWallCoords[4][2],0,scale) end			
 	if viewMatrix[4][3] == 1 then love.graphics.draw(left_wall4, rWallCoords[4][1],rWallCoords[4][2],0,-scale,scale) end			
 	if viewMatrix[4][2] == 1 then love.graphics.draw(front_wall3,fWallCoords[4][1],fWallCoords[4][2],0,scale) end			

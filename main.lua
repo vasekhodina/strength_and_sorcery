@@ -3,6 +3,7 @@ worldScreen = require "worldScreen"
 ih = require "inputHandler"
 party = require "party"
 map = require "map"
+game_debug = require "game_debug"
 
 -- Configure the game window
 function love.conf(t)
@@ -16,7 +17,8 @@ function love.load()
 	love.window.setTitle("Sword and Sorcery(work title)")
 	love.window.setMode(1024,720)
 	love.graphics.setDefaultFilter('nearest','nearest')
-	print('text')
+	font = love.graphics.newFont(14)
+	love.graphics.setFont(font)
 	worldScreen.loadWorldScreen()
 
 end
@@ -29,5 +31,6 @@ end
 function love.draw()
 	worldScreen.drawWorldScreen(party,map)
 	love.graphics.rectangle("line",0,0,904,552)
+	game_debug.print_message()
 end
 return M
