@@ -2,14 +2,20 @@
 local WS = {}
 
 map = require "map"
-party = require "party"
+Party = require "Party"
 
 local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
 local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
 local fWallCoords = {{4,4}, {128,24}, {240,74}, {296,124}}
-local scale = 4
+local SCALE = 4
 
-function WS.loadWorldScreen()
+function WS:newWorldScreen(newParty)
+	party = newParty
+	WS:loadWorldScreen()
+end
+
+
+function WS:loadWorldScreen()
 	floor = love.graphics.newImage("assets/world/dm2/floor.png")
 	roof = love.graphics.newImage("assets/world//dm2/ceiling.png")
 
@@ -28,27 +34,27 @@ function WS.loadWorldScreen()
 
 end
 
-function WS.drawWorldScreen(party,map)
-	love.graphics.draw(floor,4,212,0,scale)
-	love.graphics.draw(roof,4,4,0,scale)
-	viewMatrix = WS.createViewMatrix(party.getX(), party.getY(), party.getDirection(), map.currentMap)
-	if viewMatrix[4][1] == 1 then love.graphics.draw(left_wall4, lWallCoords[4][1],lWallCoords[4][2],0,scale) end			
-	if viewMatrix[4][3] == 1 then love.graphics.draw(left_wall4, rWallCoords[4][1],rWallCoords[4][2],0,-scale,scale) end			
-	if viewMatrix[4][2] == 1 then love.graphics.draw(front_wall3,fWallCoords[4][1],fWallCoords[4][2],0,scale) end			
+function WS:drawWorldScreen(party,map)
+	love.graphics.draw(floor,4,212,0,SCALE)
+	love.graphics.draw(roof,4,4,0,SCALE)
+	viewMatrix = WS:createViewMatrix(party:getX(), party:getY(), party:getDirection(), map.currentMap)
+	if viewMatrix[4][1] == 1 then love.graphics.draw(left_wall4, lWallCoords[4][1],lWallCoords[4][2],0,SCALE) end			
+	if viewMatrix[4][3] == 1 then love.graphics.draw(left_wall4, rWallCoords[4][1],rWallCoords[4][2],0,-SCALE,SCALE) end			
+	if viewMatrix[4][2] == 1 then love.graphics.draw(front_wall3,fWallCoords[4][1],fWallCoords[4][2],0,SCALE) end			
 
-	if viewMatrix[3][1] == 1 then love.graphics.draw(left_wall3, lWallCoords[3][1],lWallCoords[3][2],0,scale) end			
-	if viewMatrix[3][3] == 1 then love.graphics.draw(left_wall3, rWallCoords[3][1],rWallCoords[3][2],0,-scale,scale) end			
-	if viewMatrix[3][2] == 1 then love.graphics.draw(front_wall2,fWallCoords[3][1],fWallCoords[3][2],0,scale) end			
+	if viewMatrix[3][1] == 1 then love.graphics.draw(left_wall3, lWallCoords[3][1],lWallCoords[3][2],0,SCALE) end			
+	if viewMatrix[3][3] == 1 then love.graphics.draw(left_wall3, rWallCoords[3][1],rWallCoords[3][2],0,-SCALE,SCALE) end			
+	if viewMatrix[3][2] == 1 then love.graphics.draw(front_wall2,fWallCoords[3][1],fWallCoords[3][2],0,SCALE) end			
 
-	if viewMatrix[2][1] == 1 then love.graphics.draw(left_wall2, lWallCoords[2][1],lWallCoords[2][2],0,scale) end			
-	if viewMatrix[2][3] == 1 then love.graphics.draw(left_wall2, rWallCoords[2][1],rWallCoords[2][2],0,-scale,scale) end			
-	if viewMatrix[2][2] == 1 then love.graphics.draw(front_wall1,fWallCoords[2][1],fWallCoords[2][2],0,scale) end			
+	if viewMatrix[2][1] == 1 then love.graphics.draw(left_wall2, lWallCoords[2][1],lWallCoords[2][2],0,SCALE) end			
+	if viewMatrix[2][3] == 1 then love.graphics.draw(left_wall2, rWallCoords[2][1],rWallCoords[2][2],0,-SCALE,SCALE) end			
+	if viewMatrix[2][2] == 1 then love.graphics.draw(front_wall1,fWallCoords[2][1],fWallCoords[2][2],0,SCALE) end			
 
-	if viewMatrix[1][1] == 1 then love.graphics.draw(left_wall1, lWallCoords[1][1],lWallCoords[1][2],0,scale) end			
-	if viewMatrix[1][3] == 1 then love.graphics.draw(left_wall1, rWallCoords[1][1],rWallCoords[1][2],0,-scale,scale) end			
+	if viewMatrix[1][1] == 1 then love.graphics.draw(left_wall1, lWallCoords[1][1],lWallCoords[1][2],0,SCALE) end			
+	if viewMatrix[1][3] == 1 then love.graphics.draw(left_wall1, rWallCoords[1][1],rWallCoords[1][2],0,-SCALE,SCALE) end			
 end
 
-function WS.createViewMatrix(x,y,partyDirection,currentMap)
+function WS:createViewMatrix(x,y,partyDirection,currentMap)
 	local viewMatrix = {}
 	for i=1,4 do viewMatrix[i] = {} end
 	if partyDirection == 0 then

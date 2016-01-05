@@ -1,13 +1,12 @@
 local M = {}
 worldScreen = require "worldScreen"
 ih = require "inputHandler"
-party = require "party"
+Party = require "Party"
 map = require "map"
 game_debug = require "game_debug"
 
 -- Configure the game window
 function love.conf(t)
-
 	t.modules.joystick=false
 	t.modules.physics=false
 end
@@ -19,8 +18,8 @@ function love.load()
 	love.graphics.setDefaultFilter('nearest','nearest')
 	font = love.graphics.newFont(14)
 	love.graphics.setFont(font)
-	worldScreen.loadWorldScreen()
-
+	party = Party:newParty(17,6,0)
+	ws = worldScreen.newWorldScreen()
 end
 
 -- Increase the size of the rectangle every frame.
