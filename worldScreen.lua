@@ -8,10 +8,16 @@ local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
 local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
 local fWallCoords = {{4,4}, {128,24}, {240,74}, {296,124}}
 local SCALE = 4
+local party = 0
+local local_map = 0
+viewMatrix = 0
 
-function WS:newWorldScreen(newParty)
-	party = newParty
+function WS:newWorldScreen(newParty,newMap)
+	self.party = newParty
+	self.local_map = newMap
+	print("Info: Created World screen with party: " .. party)
 	WS:loadWorldScreen()
+	return self
 end
 
 
@@ -34,10 +40,10 @@ function WS:loadWorldScreen()
 
 end
 
-function WS:drawWorldScreen(party,map)
+function WS:drawWorldScreen()
 	love.graphics.draw(floor,4,212,0,SCALE)
 	love.graphics.draw(roof,4,4,0,SCALE)
-	viewMatrix = WS:createViewMatrix(party:getX(), party:getY(), party:getDirection(), map.currentMap)
+	viewMatrix = WS:createViewMatrix(self.party:getX(), self.party:getY(), self.party:getDirection(), self.local_map)
 	if viewMatrix[4][1] == 1 then love.graphics.draw(left_wall4, lWallCoords[4][1],lWallCoords[4][2],0,SCALE) end			
 	if viewMatrix[4][3] == 1 then love.graphics.draw(left_wall4, rWallCoords[4][1],rWallCoords[4][2],0,-SCALE,SCALE) end			
 	if viewMatrix[4][2] == 1 then love.graphics.draw(front_wall3,fWallCoords[4][1],fWallCoords[4][2],0,SCALE) end			

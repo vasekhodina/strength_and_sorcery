@@ -13,6 +13,7 @@ function Party:newParty(newX, newY, newDirection)
 	x = newX
 	y = newY
 	direction = newDirection
+	print("Info: Creating new party, x:" .. newX .. " y: " .. newY .. ", direction: " .. newDirection)
 	return self
 end
 
@@ -35,7 +36,7 @@ function Party:setX(new_x)
 end
 
 function Party:getX()
-	return self.x
+	return x
 end
 
 function Party:setY(new_y)
