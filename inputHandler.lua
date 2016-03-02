@@ -16,14 +16,10 @@ function love.keypressed(key)
 		Party:moveForward()
 	end
 	if key == "down" then
-		Party:moveBack()
+		Party:moveBackward()
 	end
 	if key == "p" then
-		if game_debug:getDebug() == false then
-			game_debug:setDebug(true)
-		else 
-			game_debug:setDebug(false)
-		end
+		game_debug:switchDebug()
 	end
 end
 

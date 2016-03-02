@@ -14,7 +14,6 @@ function game_debug:new(newParty,newWorldScreen)
 	worldScreen = worldScreen
 end
 
---TODO include map into this function
 function game_debug:prepareDebugText(debug_party)
 	debug_text = "Map name: " .. map_name .. "\n" ..
 							 "Party location, X: " .. debug_party:getX() .. ", Y: " .. debug_party:getY() .. "\n"  ..
@@ -22,7 +21,6 @@ function game_debug:prepareDebugText(debug_party)
 end
 
 function game_debug:print_message()
-	print(debug_bool)
 	game_debug:prepareDebugText(party)
 	if debug_bool == true then
 		love.graphics.print(debug_text,20,20)
@@ -33,13 +31,13 @@ function game_debug:print_message()
 	end
 end
 
-function game_debug:setDebug(debug_var)
-	debug_bool=debug_var
-	if debug_bool == True then
-		print("Debug mode enabled!")
-	end
-	if debug_bool == False then
-		print("Debug mode disabled!")
+function game_debug:switchDebug()
+	if debug_bool == false then
+		debug_bool = true
+		print("Info: Debug mode enabled!")
+	else 
+		debug_bool = false 
+		print("Info: Debug mode disabled!")
 	end
 end
 

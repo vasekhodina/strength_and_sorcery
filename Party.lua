@@ -8,11 +8,13 @@ map = require "map"
 local direction = 0
 local x = 0
 local y = 0
+local map = 0
 
-function Party:newParty(newX, newY, newDirection)
+function Party:new(newX, newY, newDirection, newMap)
 	x = newX
 	y = newY
 	direction = newDirection
+	map = newMap
 	print("Info: Creating new party, x:" .. newX .. " y: " .. newY .. ", direction: " .. newDirection)
 	return self
 end
@@ -53,19 +55,19 @@ end
 
 function Party:moveForward()
 	if direction == 0 then
-		if map.currentMap[y-1][x] == 0 then
+		if map[y-1][x] == 0 then
 			y = y - 1
 		end
 	elseif direction == 1 then
-		if map.currentMap[y][x+1] == 0 then
+		if map[y][x+1] == 0 then
 			x = x + 1
 		end
 	elseif direction == 2 then
-		if map.currentMap[y+1][x] == 0 then
+		if map[y+1][x] == 0 then
 			y = y + 1
 		end
 	elseif direction == 3 then
-		if map.currentMap[y][x-1] == 0 then
+		if map[y][x-1] == 0 then
 			x = x - 1
 		end
 	else 
@@ -74,6 +76,24 @@ function Party:moveForward()
 end
 
 function Party:moveBackward()
-
+	if direction == 0 then
+		if map[y+1][x] == 0 then
+			y = y + 1
+		end
+	elseif direction == 1 then
+		if map[y][x-1] == 0 then
+			x = x - 1
+		end
+	elseif direction == 2 then
+		if map[y-1][x] == 0 then
+			y = y - 1
+		end
+	elseif direction == 3 then
+		if map[y][x+1] == 0 then
+			x = x + 1
+		end
+	else 
+		print("Error in party orientation!")
+	end
 end
 return Party
