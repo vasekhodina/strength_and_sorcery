@@ -7,7 +7,6 @@ Party = require "Party"
 local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
 local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
 local fWallCoords = {{4,4}, {128,24}, {240,74}, {296,124}}
-local SCALE = 4
 local party = 0
 local local_map = 0
 viewMatrix = 0
@@ -40,7 +39,7 @@ function WS:loadWorldScreen()
 
 end
 
-function WS:drawWorldScreen()
+function WS:drawWorldScreen(SCALE)
 	love.graphics.draw(floor,4,212,0,SCALE)
 	love.graphics.draw(roof,4,4,0,SCALE)
 	viewMatrix = WS:createViewMatrix(self.party:getX(), self.party:getY(), self.party:getDirection(), self.local_map)

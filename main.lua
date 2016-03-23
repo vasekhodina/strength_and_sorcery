@@ -6,6 +6,9 @@ map = require "map"
 game_debug = require "game_debug"
 ws = 0
 
+-- Constants
+SCALE = 4
+
 -- Configure the game window
 function love.conf(t)
 	t.modules.joystick=false
@@ -22,6 +25,7 @@ function love.load()
 	party = Party:new(17,6,0,map.currentMap)
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
 	gd = game_debug:new(party,worldScreen)
+	item_list = 0
 end
 
 -- Increase the size of the rectangle every frame.
@@ -30,7 +34,7 @@ end
 
 -- Draw a coloured rectangle.
 function love.draw()
-	ws:drawWorldScreen()
+	ws:drawWorldScreen(SCALE)
 	love.graphics.rectangle("line",0,0,904,552)
 	game_debug.print_message()
 end
