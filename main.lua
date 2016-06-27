@@ -17,12 +17,20 @@ end
 
 -- Load some default values for our rectangle.
 function love.load()
+	--init the window
 	love.window.setTitle("Strength and Sorcery")
 	love.window.setMode(1024,720)
 	love.graphics.setDefaultFilter('nearest','nearest')
+	-- init debug font
 	font = love.graphics.newFont(14)
 	love.graphics.setFont(font)
+	--init game font
+	--TODO finish loading some fonts in assest
+	font = love.graphics.newImageFont()
+	
+	
 	party = Party:new(17,6,0,map.currentMap)
+
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
 	gd = game_debug:new(party,worldScreen)
 	item_list = 0
