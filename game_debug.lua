@@ -1,6 +1,7 @@
 local game_debug = {}
 
 Party = require "Party"
+Gui = require "Gui"
 
 local map_name = ""
 
@@ -15,12 +16,14 @@ function game_debug:new(newParty,newWorldScreen)
 end
 
 function game_debug:prepareDebugText(debug_party)
+	love.graphics.setFont(Gui.font)
 	debug_text = "Map name: " .. map_name .. "\n" ..
 							 "Party location, X: " .. debug_party:getX() .. ", Y: " .. debug_party:getY() .. "\n"  ..
 							 "Party direction: " .. debug_party:getDirection()
 end
 
 function game_debug:print_message()
+	love.graphics.setFont(Gui.font)
 	game_debug:prepareDebugText(party)
 	if debug_bool == true then
 		love.graphics.print(debug_text,20,20)
@@ -34,9 +37,11 @@ end
 function game_debug:switchDebug()
 	if debug_bool == false then
 		debug_bool = true
+	love.graphics.setFont(Gui.font)
 		print("Info: Debug mode enabled!")
 	else 
 		debug_bool = false 
+	love.graphics.setFont(Gui.font)
 		print("Info: Debug mode disabled!")
 	end
 end

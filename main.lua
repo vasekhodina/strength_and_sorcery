@@ -4,6 +4,7 @@ ih = require "inputHandler"
 Party = require "Party"
 map = require "map"
 game_debug = require "game_debug"
+Gui = require "Gui"
 ws = 0
 
 -- Constants
@@ -22,13 +23,11 @@ function love.load()
 	love.window.setMode(1024,720)
 	love.graphics.setDefaultFilter('nearest','nearest')
 	-- init debug font
-	font = love.graphics.newFont(14)
-	love.graphics.setFont(font)
+	Gui.font = love.graphics.newFont(14)
+	love.graphics.setFont(Gui.font)
 	--init game font
-	--TODO finish loading some fonts in assest
-	font = love.graphics.newImageFont()
-	
-	
+	Gui.pixel_font = love.graphics.newFont("assets/fonts/lunchds.ttf")
+
 	party = Party:new(17,6,0,map.currentMap)
 
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
