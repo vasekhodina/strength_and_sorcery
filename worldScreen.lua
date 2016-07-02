@@ -4,9 +4,9 @@ local WS = {}
 map = require "map"
 Party = require "Party"
 
-local lWallCoords = {{4,4}, {4,24}, {4,74}, {4,124}}
-local rWallCoords = {{900,4}, {900,24}, {900,74}, {900,124}}
-local fWallCoords = {{4,4}, {128,24}, {240,74}, {296,124}}
+local lWallCoords = {{4,4}, {4,24}, {4,68}, {28,108}}
+local rWallCoords = {{900,4}, {900,24}, {900,70}, {876,108}}
+local fWallCoords = {{4,4}, {120,28}, {236,72}, {308,108}}
 local party = 0
 local local_map = 0
 viewMatrix = 0
@@ -21,21 +21,21 @@ end
 
 
 function WS:loadWorldScreen()
-	floor = love.graphics.newImage("assets/world/dm2/floor.png")
-	roof = love.graphics.newImage("assets/world//dm2/ceiling.png")
+	floor = love.graphics.newImage("assets/world/templates/floor.png")
+	roof = love.graphics.newImage("assets/world//templates/ceiling.png")
 
-	front_wall1 = love.graphics.newImage("assets/world/dm2/front1.png")
-	front_wall2 = love.graphics.newImage("assets/world/dm2/front2.png")
-	front_wall3 = love.graphics.newImage("assets/world/dm2/front3.png")
+	front_wall1 = love.graphics.newImage("assets/world/templates/front1_template.png")
+	front_wall2 = love.graphics.newImage("assets/world/templates/front2_template.png")
+	front_wall3 = love.graphics.newImage("assets/world/templates/front3_template.png")
 	
-	left_wall1 = love.graphics.newImage("assets/world/dm2/side1.png")
-	left_wall2 = love.graphics.newImage("assets/world/dm2/side2.png")
-	left_wall3 = love.graphics.newImage("assets/world/dm2/side3.png")
-	left_wall4 = love.graphics.newImage("assets/world/dm2/side4.png")
+	left_wall1 = love.graphics.newImage("assets/world/templates/side1_template.png")
+	left_wall2 = love.graphics.newImage("assets/world/templates/side2_template.png")
+	left_wall3 = love.graphics.newImage("assets/world/templates/side3_template.png")
+	left_wall4 = love.graphics.newImage("assets/world/templates/side4_template.png")
 
-	lft_wall1 = love.graphics.newImage("assets/world/dm2/side1alt.png")
-	lft_wall2 = love.graphics.newImage("assets/world/dm2/side2alt.png")
-	lft_wall3 = love.graphics.newImage("assets/world/dm2/side3alt.png")
+	lft_wall1 = love.graphics.newImage("assets/world/templates/side1_template.png")
+	lft_wall2 = love.graphics.newImage("assets/world/templates/side2_template.png")
+	lft_wall3 = love.graphics.newImage("assets/world/templates/side3_template.png")
 
 end
 
