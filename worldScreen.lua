@@ -65,7 +65,7 @@ function WS:createViewMatrix(x,y,partyDirection,currentMap)
 	if partyDirection == 0 then
 		for i=1,4 do
 			for j=1,3 do 
-				if y-i-1 <=0 or y-i-1 > #currentMap or x+j-2 <= 0 or x+j-2 > #currentMap[i] 
+				if y-i <=0 or y-i-1 > #currentMap or x+j-2 <= 0 or x+j-2 > #currentMap[i] 
 				then viewMatrix[i][j] = 1
 				else viewMatrix[i][j] = currentMap[y-i+1][x+j-2] 
 				end
@@ -85,7 +85,7 @@ function WS:createViewMatrix(x,y,partyDirection,currentMap)
 	if partyDirection == 2 then
 		for i=1,4 do
 			for j=1,3 do 
-				if y+i+1 <=0 or y+i+1 > #currentMap or x-j+2 <= 0 or x-j+2 > #currentMap[i] 
+				if y+i+1 <=0 or y+i > #currentMap or x-j+2 <= 0 or x-j+2 > #currentMap[i] 
 					then viewMatrix[i][j] = 1
 					else viewMatrix[i][j] = currentMap[y+i-1][x-j+2] 
 				end
@@ -95,7 +95,10 @@ function WS:createViewMatrix(x,y,partyDirection,currentMap)
 	if partyDirection == 3 then
 		for i=1,4 do
 			for j=1,3 do 
-				viewMatrix[i][j] = currentMap[y-j+2][x-i+1] 
+				if x-i+1 <=0 or x-i+1 > #currentMap or y-j+2 <= 0 or y-j+2 > #currentMap[i]
+					then viewMatrix[i][j] = 1
+					else viewMatrix[i][j] = currentMap[y-j+2][x-i+1] 
+				end
 			end
 		end
 	end
