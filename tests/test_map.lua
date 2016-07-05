@@ -19,7 +19,15 @@
 --
 package.path = package.path .. ";../?.lua"
 map = require"map"
-printable_map = map:getMapSquare(17,5,5,0)
-for i=1,5 do
-  print(table.concat(printable_map[i]))
+function print_map(printable_map)
+	for i=5,1,-1 do
+		print(table.concat(printable_map[i]))
+	end
+	print("\n")
 end
+
+for i=0,3 do
+	printable_map = map:getMapSquare(17,5,5,i)
+	print_map(printable_map)
+end
+
