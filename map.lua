@@ -46,7 +46,6 @@ function Map:getMapSquare(x,y,direction,range)
 	--if direction is to east
 	if direction == 1 then
 		y = y - math.floor(range/2)-1
-		print(range .. " " .. y)
 		x = x-1
 		for i=1,range do
 			for j=1,range do
