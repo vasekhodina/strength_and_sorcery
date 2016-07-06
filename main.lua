@@ -47,7 +47,7 @@ function love.draw()
     splash:draw(game_start_time)
   else
     ws:drawWorldScreen(SCALE)
-    love.graphics.rectangle("line",0,0,904,552)
+    love.graphics.rectangle("line",0,0,226*SCALE,138*SCALE)
     game_debug.print_message()
   end
 end

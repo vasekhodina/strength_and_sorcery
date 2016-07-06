@@ -27,7 +27,7 @@ function print_map(printable_map)
 end
 
 for i=0,3 do
-	printable_map = map:getMapSquare(17,5,5,i)
+	printable_map = map:getMapSquare(17,5,i,5)
 	print_map(printable_map)
 end
 

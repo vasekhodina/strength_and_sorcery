@@ -27,7 +27,7 @@ Map.items = {}
 --Function that provides a matrix that is a part of map, 
 --It takes x,y position on the map, range how big the matrix should be and a direction where it should be progressing
 --It takes x,y as center of one side of square and maps all the tiles in from of it in the specified direction
-function Map:getMapSquare(x,y,range,direction)
+function Map:getMapSquare(x,y,direction,range)
 	local map_square = {}
 	for i=1,range do map_square[i] = {} end
 	--if direction is to north, we always move the beginning to left bottom of matrix
@@ -45,7 +45,6 @@ function Map:getMapSquare(x,y,range,direction)
 	end
 	--if direction is to east
 	if direction == 1 then
-		print(y/range)
 		y = y - math.floor(range/2)-1
 		print(range .. " " .. y)
 		x = x-1
