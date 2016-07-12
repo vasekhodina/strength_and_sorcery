@@ -3,15 +3,14 @@
 gui = require "Gui"
 local Splash = {}
 
-local text_x = 100
-local text_y = 200
-local text_size = 4
+local text_x = 25
+local text_y = 50
 -- How long should the splash be visible
 local stay = 5
 Splash.show = true
 
 function Splash:draw(stime) 
-  gui:echo("Welcome to the Dungeon.\nHow fast can you find the exit?", text_x, text_y, text_size)
+  gui:echo("Welcome to the Dungeon.\nHow fast can you find the exit?", text_x, text_y)
   if (love.timer.getTime() - stime) > stay then
     Splash.show = false
   end

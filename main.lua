@@ -1,4 +1,5 @@
 local M = {}
+conf = require "conf"
 worldScreen = require "worldScreen"
 ih = require "inputHandler"
 Party = require "Party"
@@ -7,15 +8,6 @@ game_debug = require "game_debug"
 gui = require "Gui"
 splash = require "Splash"
 ws = 0
-
--- Constants
-SCALE = 4
-
--- Configure the game window
-function love.conf(t)
-	t.modules.joystick=false
-	t.modules.physics=false
-end
 
 -- Load some default values for our rectangle.
 function love.load()
@@ -43,11 +35,12 @@ end
 
 -- Draw a coloured rectangle.
 function love.draw()
+	love.graphics.scale(conf.scale)
   if splash.show == true then
     splash:draw(game_start_time)
   else
-    ws:drawWorldScreen(SCALE)
-    love.graphics.rectangle("line",0,0,226*SCALE,138*SCALE)
+    ws:drawWorldScreen()
+    love.graphics.rectangle("line",0,0,225,137)
     game_debug.print_message()
   end
 end

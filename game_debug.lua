@@ -2,6 +2,7 @@ local game_debug = {}
 
 Party = require "Party"
 Gui = require "Gui"
+conf = require "conf"
 
 local map_name = ""
 
@@ -23,6 +24,8 @@ function game_debug:prepareDebugText(debug_party)
 end
 
 function game_debug:print_message()
+	love.graphics.push()
+	love.graphics.scale(0.25)
 	love.graphics.setFont(Gui.font)
 	game_debug:prepareDebugText(party)
 	if is_debug == true then
@@ -31,16 +34,17 @@ function game_debug:print_message()
 			love.graphics.print(table.concat(viewMatrix[i]),20,120-(i*10))
 		end
 	end
+	love.graphics.pop()
 end
 
 function game_debug:switchDebug()
 	if is_debug == false then
 		is_debug = true
-	love.graphics.setFont(Gui.font)
+		love.graphics.setFont(Gui.font)
 		print("Info: Debug mode enabled!")
 	else 
 		is_debug = false 
-	love.graphics.setFont(Gui.font)
+		love.graphics.setFont(Gui.font)
 		print("Info: Debug mode disabled!")
 	end
 end
