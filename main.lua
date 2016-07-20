@@ -7,6 +7,7 @@ map = require "map"
 game_debug = require "game_debug"
 gui = require "Gui"
 splash = require "Splash"
+screen = require "screen"
 ws = 0
 
 -- Load some default values for our rectangle.
@@ -26,17 +27,21 @@ function love.load()
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
 	gd = game_debug:new(party,worldScreen)
 	item_list = 0
-    game_start_time = love.timer.getTime()
+  game_start_time = love.timer.getTime()
+	fin_screen = screen:new("Final screen", "Congratulations!", 5)
 end
 
--- Increase the size of the rectangle every frame.
 function love.update(dt)
+	if party.getX() == 1 and party.getY() == 19 then
+		fin_screen.show = true
+	end
 end
 
--- Draw a coloured rectangle.
 function love.draw()
 	love.graphics.scale(conf.scale)
-  if splash.show == true then
+	if fin_screen.show then
+		fin_screen.draw()
+	elseif splash.show == true then
     splash:draw(game_start_time)
   else
     ws:drawWorldScreen()

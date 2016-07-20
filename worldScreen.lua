@@ -41,6 +41,10 @@ function WS:loadWorldScreen()
 
 	far_left_wall2 = love.graphics.newImage("assets/world/orig_templates/farside2_template.png")
 	far_left_wall3 = love.graphics.newImage("assets/world/orig_templates/farside3_template.png")
+	exit = {}
+	exit[1] = love.graphics.newImage("assets/world/exit1.png")
+	exit[2] = love.graphics.newImage("assets/world/exit2.png")
+	exit[3] = love.graphics.newImage("assets/world/exit3.png")
 end
 
 function WS:drawWorldScreen()
@@ -71,6 +75,16 @@ function WS:drawWorldScreen()
 
 	if viewMatrix[1][2] == 1 then love.graphics.draw(left_wall1, lWallCoords[1][1],lWallCoords[1][2],0,1) end			
 	if viewMatrix[1][4] == 1 then love.graphics.draw(left_wall1, rWallCoords[1][1],rWallCoords[1][2],0,-1,1) end			
+
+	if self.party:getX() == 4 and self.party.getY() == 19 and self.party.getDirection() == 3 then
+		love.graphics.draw(exit[3], fWallCoords[3][1], fWallCoords[3][2])
+	end
+	if self.party:getX() == 3 and self.party.getY() == 19 and self.party.getDirection() == 3 then
+		love.graphics.draw(exit[2], fWallCoords[2][1], fWallCoords[2][2])
+	end
+	if self.party:getX() == 2 and self.party.getY() == 19 and self.party.getDirection() == 3 then
+		love.graphics.draw(exit[1], fWallCoords[1][1], fWallCoords[1][2])
+	end
 end                                                                            
 
 return WS
