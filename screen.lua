@@ -23,9 +23,13 @@ end
 
 function Screen:draw(stime) 
   gui:echo(Screen.text, text_x, text_y)
-  if (love.timer.getTime() - Screen.stime) > Screen.stay then
-    Screen.show = false
-  end
+  --if (love.timer.getTime() - Screen.stime) > Screen.stay then
+  --  Screen.show = false
+  --end
+end
+
+function Screen:append(text)
+  Screen.text = Screen.text .. text
 end
 
 return Screen

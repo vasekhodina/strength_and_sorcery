@@ -27,26 +27,29 @@ function love.load()
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
 	gd = game_debug:new(party,worldScreen)
 	item_list = 0
-  game_start_time = love.timer.getTime()
-	fin_screen = screen:new("Final screen", "Congratulations!", 5)
+	game_start_time = love.timer.getTime()
+	fin_screen = screen:new("Final screen", "Congratulations!\n", 5)
+	game_timer = nil
 end
 
 function love.update(dt)
-	if party.getX() == 1 and party.getY() == 19 then
+	if party.getX() == 1 and party.getY() == 19 and fin_screen.show == false then
 		fin_screen.show = true
+		fin_screen:append("It took you " .. math.floor(love.timer.getTime() - game_timer) .. " seconds.")
 	end
 end
 
 function love.draw()
 	love.graphics.scale(conf.scale)
 	if fin_screen.show then
-		fin_screen.draw()
-	elseif splash.show == true then
-    splash:draw(game_start_time)
-  else
-    ws:drawWorldScreen()
-    love.graphics.rectangle("line",0,0,225,137)
-    game_debug.print_message()
-  end
+		fin_screen:draw()
+	elseif splash.show then
+    	splash:draw(game_start_time)
+		game_timer = love.timer.getTime()
+    else
+    	ws:drawWorldScreen()
+    	love.graphics.rectangle("line",0,0,225,137)
+    	game_debug.print_message()
+  	end
 end
 return M
