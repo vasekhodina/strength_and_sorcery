@@ -20,8 +20,9 @@ end
 function addRandomRoom(map,maxw,maxh,count)
 	local c=0
 	local a,b,x,y,w,h
+	local timeout = 0
 
-	while (c < count) do
+	while (c < count and timeout<500) do --timeout value increase number of test operations (optimal 500-1000)
 		x,y,w,h = testRandomRoom(map,maxw,maxh)
 		if x then
 			for a=1,w do
@@ -30,8 +31,12 @@ function addRandomRoom(map,maxw,maxh,count)
 				end
 			end
 			c = c+1
-			print(c)
+		else timeout = timeout+1
 		end
+	end
+	
+	if timeout>99 then
+		print("Error - internal exception: \nTimeout " .. timeout .. " > #Generated: ".. c .. " of " .. count)
 	end
 end
 
@@ -65,7 +70,7 @@ function testRandomRoom(map,maxw,maxh)
 				end
 			end
 		end
-		
+
 		--with no "out of bounds" of intersects, return values
 		if not isUsed then
 			return x,y,w,h
@@ -75,7 +80,7 @@ function testRandomRoom(map,maxw,maxh)
 	end
 end
 
---TODO: after optimalization, move this function out of generator
+--TEST DRAW FUNCTION
 function drawMap(map)
 	local a,b
 	local mapW = table.getn(map)
