@@ -3,13 +3,17 @@
 
 local Party = {}
 
--- keeps party direction 0 - north, 1 - east, 2 - south, 3 - west 
 map = require "map"
+-- keeps party direction 0 - north, 1 - east, 2 - south, 3 - west 
 local direction = 0
 local x = 0
 local y = 0
 local map = 0
 
+--- Constructor of the party table ("class") 
+-- @param newX map coordinates where the party should be spawn 
+-- @param newY map coordinates where the party should be spawn 
+-- @param newDirection direction of the new party
 function Party:new(newX, newY, newDirection, newMap)
 	x = newX
 	y = newY

@@ -2,7 +2,7 @@
 local WS = {}
 
 map = require "map"
-Party = require "Party"
+Party = require "party"
 
 local lWallCoords = {{1,1}, {1,10}, {1,20}, {9,26}}
 local rWallCoords = {{225,1}, {225,10}, {225,20}, {217,26}}
@@ -26,7 +26,7 @@ end
 
 
 function WS:loadWorldScreen()
-	floor = love.graphics.newImage("assets/world/orig_templates/floor_template.png")
+	floor = love.graphics.newImage("assets/world/concrete/floor.png")
 	roof = love.graphics.newImage("assets/world//orig_templates/ceiling_template.png")
 
 	front_wall1 = love.graphics.newImage("assets/world/orig_templates/front1_template.png")
@@ -87,4 +87,34 @@ function WS:drawWorldScreen()
 	end
 end                                                                            
 
+--- This function checks if pixel at x,y coordinates belongs to a sprite and is opaque.
+-- @param sprite The sprite to check
+-- @param x The x coordinate of the pixel
+-- @param y The x coordinate of the pixel
+-- @return T/F if the pixel is opaque or not
+function WS:isXYOpaque(sprite, x, y)
+	pixel = sprite:getData():getPixel(x,y)
+	if pixel[a] ~= 0 then
+		return true
+	else 
+		return false
+	end
+end
+
+--- Function callback deciding if the sprite (item, wall decor) has been clicked and should be activated
+-- @param sprite The sprite that should be activated
+-- @param sx X coord of the sprite
+-- @param sy Y coord of the sprite
+-- @param x X coord of the place of contact (mouseclick)
+-- @param y Y coord of the place of contact (mouseclick)
+-- @return T/F if the sprite should be activated
+function WS:activateSprite(sprite, sx, sy, x, y)
+	if x >= sx and x < sx + sprite.getWidth()
+	and y >= sy and y < sy + sprite.getHeigth() 
+	and WS:isXYOpaque(sprite, x, y) then
+		return true
+	else
+		return false
+	end
+end
 return WS

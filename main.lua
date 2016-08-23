@@ -2,19 +2,19 @@ local M = {}
 conf = require "conf"
 worldScreen = require "worldScreen"
 ih = require "inputHandler"
-Party = require "Party"
+party = require "party"
 map = require "map"
 game_debug = require "game_debug"
-gui = require "Gui"
+gui = require "gui"
 splash = require "Splash"
 screen = require "screen"
 ws = 0
 
--- Load some default values for our rectangle.
+--- Override of love2d load function, mostly loading graphics + setting fonts and window size
 function love.load()
 	--init the window
 	love.window.setTitle("Strength and Sorcery")
-	love.window.setMode(1024,720)
+	love.window.setMode(320*conf.scale,200*conf.scale)
 	love.graphics.setDefaultFilter('nearest','nearest')
 	-- init debug font
 	gui.font = love.graphics.newFont(14)
@@ -22,7 +22,7 @@ function love.load()
 	--init game font
 	gui.pixel_font = love.graphics.newFont("assets/fonts/lunchds.ttf")
 
-	party = Party:new(17,6,0,map.currentMap)
+	party = party:new(17,6,0,map.currentMap)
 
 	ws = worldScreen:newWorldScreen(party,map.currentMap)
 	gd = game_debug:new(party,worldScreen)
@@ -32,6 +32,8 @@ function love.load()
 	game_timer = nil
 end
 
+--- Override of love2d update function, in update function all of the game logic should be handled.
+-- @param dt Delta time for update function, see gamedevelopmentpatterns.com for explanation
 function love.update(dt)
 	if party.getX() == 1 and party.getY() == 19 and fin_screen.show == false then
 		fin_screen.show = true
@@ -39,6 +41,7 @@ function love.update(dt)
 	end
 end
 
+--- Separate function handling graphics drawing.
 function love.draw()
 	love.graphics.scale(conf.scale)
 	if fin_screen.show then

@@ -1,7 +1,7 @@
 local game_debug = {}
 
-Party = require "Party"
-Gui = require "Gui"
+Party = require "party"
+Gui = require "gui"
 conf = require "conf"
 
 local map_name = ""

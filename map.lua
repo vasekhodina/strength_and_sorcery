@@ -21,8 +21,21 @@ Map.currentMap = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 								  {1,1,1,0,1,0,1,1,1,0,1,1,1,1,1,1,0,1,1,1},
 								  {0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1},
 								  {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
+Map.length = {}
+Map.length.x = 20
+Map.length.y = 20
 
-Map.items = {}
+-- Basic unit of map
+Map.tile = {}
+-- Bool for enabling standing on a tile: true = party can stand on tile 
+Map.tile.isWalkable = true
+-- Wall decorations are stuff like buttons, levers, mirrors, etc... each world side has one table, north, east, south, west
+Map.tile.n_wall_decor = {}
+Map.tile.e_wall_decor = {}
+Map.tile.s_wall_decor = {}
+Map.tile.w_wall_decor = {}
+-- Table containing items of the tile
+Map.tile.items = {}
 
 --Function that provides a matrix that is a part of map, 
 --It takes x,y position on the map, range how big the matrix should be and a direction where it should be progressing

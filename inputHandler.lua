@@ -5,7 +5,7 @@ game_debug = require "game_debug"
 -- inputHandler.lua
 
 function love.keypressed(key)
-	local Party = require "Party"
+	local Party = require "party"
 	if key == "right" then
 		Party:changeDirection(1)
 	end

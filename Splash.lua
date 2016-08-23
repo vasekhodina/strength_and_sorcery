@@ -1,12 +1,12 @@
 -- map.lua the class with functions and variables uded with maps
 -- Splash.lua
-gui = require "Gui"
+gui = require "gui"
 local Splash = {}
 
 local text_x = 25
 local text_y = 50
 -- How long should the splash be visible
-local stay = 1
+local stay = 10
 Splash.show = true
 
 function Splash:draw(stime) 

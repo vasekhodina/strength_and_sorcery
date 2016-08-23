@@ -1,6 +1,6 @@
 -- screen.lua
 -- table for creation of different screens that have only text, like splash screen, end screen and so on
-gui = require "Gui"
+gui = require "gui"
 local Screen = {}
 
 local text_x = 25
