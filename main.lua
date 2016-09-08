@@ -51,7 +51,7 @@ function love.draw()
 		game_timer = love.timer.getTime()
     else
     	ws:drawWorldScreen()
-    	love.graphics.rectangle("line",0,0,225,137)
+    	love.graphics.rectangle("line",0,0,227,137)
     	game_debug.print_message()
   	end
 end

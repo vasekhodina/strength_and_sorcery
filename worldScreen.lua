@@ -5,10 +5,10 @@ map = require "map"
 Party = require "party"
 
 local lWallCoords = {{1,1}, {1,10}, {1,20}, {9,26}}
-local rWallCoords = {{225,1}, {225,10}, {225,20}, {217,26}}
-local fWallCoords = {{32,10}, {59,20}, {78,26}, {90,31}}
+local rWallCoords = {{226,1}, {226,10}, {226,20}, {218,26}}
+local fWallCoords = {{33,10}, {60,20}, {79,26}, {91,31}}
 local far_l_wall_coords = {{1,25}, {1,26}}
-local far_r_wall_coords = {{225,25}, {225,26}}
+local far_r_wall_coords = {{226,25}, {226,26}}
 local far_row_wall_coords = {{0,31}, {45,31}, {90,31}, {135,31}, {180,31}}
 local floor_coords = {1,40}
 local ceiling_coords = {1,1}
@@ -27,20 +27,20 @@ end
 
 function WS:loadWorldScreen()
 	floor = love.graphics.newImage("assets/world/concrete/floor.png")
-	roof = love.graphics.newImage("assets/world//orig_templates/ceiling_template.png")
+	roof = love.graphics.newImage("assets/world/concrete/ceiling.png")
 
-	front_wall1 = love.graphics.newImage("assets/world/orig_templates/front1_template.png")
-	front_wall2 = love.graphics.newImage("assets/world/orig_templates/front2_template.png")
-	front_wall3 = love.graphics.newImage("assets/world/orig_templates/front3_template.png")
-	front_wall4 = love.graphics.newImage("assets/world/orig_templates/front4_template.png")
+	front_wall1 = love.graphics.newImage("assets/world/concrete/front1.png")
+	front_wall2 = love.graphics.newImage("assets/world/concrete/front2.png")
+	front_wall3 = love.graphics.newImage("assets/world/concrete/front3.png")
+	front_wall4 = love.graphics.newImage("assets/world/concrete/front4.png")
 	
-	left_wall1 = love.graphics.newImage("assets/world/orig_templates/side0_template.png")
-	left_wall2 = love.graphics.newImage("assets/world/orig_templates/side1_template.png")
-	left_wall3 = love.graphics.newImage("assets/world/orig_templates/side2_template.png")
-	left_wall4 = love.graphics.newImage("assets/world/orig_templates/side3_template.png")
+	left_wall1 = love.graphics.newImage("assets/world/concrete/side0.png")
+	left_wall2 = love.graphics.newImage("assets/world/concrete/side1.png")
+	left_wall3 = love.graphics.newImage("assets/world/concrete/side2.png")
+	left_wall4 = love.graphics.newImage("assets/world/concrete/side3.png")
 
-	far_left_wall2 = love.graphics.newImage("assets/world/orig_templates/farside2_template.png")
-	far_left_wall3 = love.graphics.newImage("assets/world/orig_templates/farside3_template.png")
+	far_left_wall2 = love.graphics.newImage("assets/world/concrete/farside2.png")
+	far_left_wall3 = love.graphics.newImage("assets/world/concrete/farside3.png")
 	exit = {}
 	exit[1] = love.graphics.newImage("assets/world/exit1.png")
 	exit[2] = love.graphics.newImage("assets/world/exit2.png")
