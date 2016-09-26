@@ -26,18 +26,18 @@ end
 
 
 function WS:loadWorldScreen()
-	floor = love.graphics.newImage("assets/world/concrete/floor.png")
-	roof = love.graphics.newImage("assets/world/concrete/ceiling.png")
+	floor = love.graphics.newImage("assets/world/simple/floor.png")
+	roof = love.graphics.newImage("assets/world/simple/ceiling.png")
 
-	front_wall1 = love.graphics.newImage("assets/world/concrete/front1.png")
-	front_wall2 = love.graphics.newImage("assets/world/concrete/front2.png")
-	front_wall3 = love.graphics.newImage("assets/world/concrete/front3.png")
-	front_wall4 = love.graphics.newImage("assets/world/concrete/front4.png")
+	front_wall1 = love.graphics.newImage("assets/world/simple/front1.png")
+	front_wall2 = love.graphics.newImage("assets/world/simple/front2.png")
+	front_wall3 = love.graphics.newImage("assets/world/simple/front3.png")
+	front_wall4 = love.graphics.newImage("assets/world/simple/front4.png")
 	
-	left_wall1 = love.graphics.newImage("assets/world/concrete/side0.png")
-	left_wall2 = love.graphics.newImage("assets/world/concrete/side1.png")
-	left_wall3 = love.graphics.newImage("assets/world/concrete/side2.png")
-	left_wall4 = love.graphics.newImage("assets/world/concrete/side3.png")
+	left_wall1 = love.graphics.newImage("assets/world/simple/side0.png")
+	left_wall2 = love.graphics.newImage("assets/world/simple/side1.png")
+	left_wall3 = love.graphics.newImage("assets/world/simple/side2.png")
+	left_wall4 = love.graphics.newImage("assets/world/simple/side3.png")
 
 	far_left_wall2 = love.graphics.newImage("assets/world/concrete/farside2.png")
 	far_left_wall3 = love.graphics.newImage("assets/world/concrete/farside3.png")
