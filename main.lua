@@ -30,6 +30,7 @@ function love.load()
 	game_start_time = love.timer.getTime()
 	fin_screen = screen:new("Final screen", "Congratulations!\n", 5)
 	game_timer = nil
+	game_screen = love.graphics.newImage("assets/world/game_screen.png")
 end
 
 --- Override of love2d update function, in update function all of the game logic should be handled.
@@ -51,8 +52,8 @@ function love.draw()
 		game_timer = love.timer.getTime()
     else
     	ws:drawWorldScreen()
-    	love.graphics.rectangle("line",0,0,227,137)
     	game_debug.print_message()
   	end
+	love.graphics.draw(game_screen)
 end
 return M
