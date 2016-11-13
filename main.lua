@@ -39,6 +39,7 @@ function love.update(dt)
 	if party.getX() == 1 and party.getY() == 19 and fin_screen.show == false then
 		fin_screen.show = true
 		fin_screen:append("It took you " .. math.floor(love.timer.getTime() - game_timer) .. " seconds.")
+		fin_screen:append("You can close the game now.")
 	end
 end
 
@@ -52,8 +53,8 @@ function love.draw()
 		game_timer = love.timer.getTime()
     else
     	ws:drawWorldScreen()
+	love.graphics.draw(game_screen)
     	game_debug.print_message()
   	end
-	love.graphics.draw(game_screen)
 end
 return M
