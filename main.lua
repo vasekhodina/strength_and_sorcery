@@ -38,7 +38,7 @@ end
 function love.update(dt)
 	if party.getX() == 1 and party.getY() == 19 and fin_screen.show == false then
 		fin_screen.show = true
-		fin_screen:append("It took you " .. math.floor(love.timer.getTime() - game_timer) .. " seconds.")
+		fin_screen:append("It took you " .. math.floor(love.timer.getTime() - game_timer) .. " seconds.\n")
 		fin_screen:append("You can close the game now.")
 	end
 end
